@@ -62,7 +62,7 @@ export default function Ecommerce() {
       </nav>
 
       {/* HERO */}
-      <section className="pt-64 pb-20 text-center px-6">
+      <section className="pt-64 mb-10 text-center px-6">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,10 +81,10 @@ export default function Ecommerce() {
       </section>
 
       {/* PRODUCTS */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      <section className="max-w-7xl mx-auto py-16">
         <h2 className="text-3xl mb-10">Products</h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-5 gap-6">
           {products.map((product) => (
             <motion.div
               key={product.asin}
@@ -96,19 +96,17 @@ export default function Ecommerce() {
                 alt={product.product_title}
                 height={300}
                 width={300}
-                className="rounded-xl mb-4 w-auto h-auto"
+                className="rounded-xl mb-4 size-full max-h-36"
               />
 
-              <h3 className="font-semibold">{product.product_title}</h3>
+              <h3 className="font-semibold">{`${product.product_title.substring(0, 30).trim()}...`}</h3>
 
               <p className="text-blue-400">{product.product_price}</p>
 
               <div className="flex items-center mb-3">
                 <p className="mr-1">{product.product_star_rating}</p>
                 {[...Array(parseInt(product.product_star_rating))].map((_, i) => 
-                  <>
-                    <Star key={i} size={14} />
-                  </>
+                    <Star key={i} size={14} color="yellow"/>
                 )}
               </div>
 
