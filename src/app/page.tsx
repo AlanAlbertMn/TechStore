@@ -89,14 +89,14 @@ export default function Ecommerce() {
             <motion.div
               key={product.asin}
               whileHover={{ y: -8 }}
-              className="bg-slate-900 p-4 rounded-2xl border border-slate-800"
+              className="bg-slate-900 p-4 rounded-2xl border border-slate-800 cursor-pointer"
             >
               <Image
                 src={product.product_photo}
                 alt={product.product_title}
                 height={300}
                 width={300}
-                className="rounded-xl mb-4 size-full max-h-36"
+                className="rounded-xl mb-4 size-full max-h-40"
               />
 
               <h3 className="font-semibold">{`${product.product_title.substring(0, 30).trim()}...`}</h3>
