@@ -1,0 +1,44 @@
+import Image from 'next/image';
+import { motion } from "framer-motion";
+import { Product } from '@/types/Product';
+import { Star } from 'lucide-react';
+
+export default function Products(props : {products: Product[]}) {
+	return (
+		<div>
+			{products.map((product: Product) => (
+				<motion.div
+					key={product.asin}
+					whileHover={{ y: -8 }}
+					className='bg-slate-900 p-4 rounded-2xl border border-slate-800 cursor-pointer'
+				>
+					<Image
+						src={product.product_photo}
+						alt={product.product_title}
+						height={300}
+						width={300}
+						className='rounded-xl mb-4 size-full max-h-40'
+					/>
+
+					<h3 className='font-semibold'>{`${product.product_title.substring(0, 30).trim()}...`}</h3>
+
+					<p className='text-blue-400'>{product.product_price}</p>
+
+					<div className='flex items-center mb-3'>
+						<p className='mr-1'>{product.product_star_rating}</p>
+						{[...Array(parseInt(product.product_star_rating))].map((_, i) => (
+							<Star key={i} size={14} color='yellow' />
+						))}
+					</div>
+
+					<button
+						// onClick={() => addToCart(product)}
+						className='w-full bg-blue-500 py-2 rounded-xl'
+					>
+						Add to cart
+					</button>
+				</motion.div>
+			))}
+		</div>
+	);
+};

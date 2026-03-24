@@ -1,9 +1,4 @@
-export const amazonData = [{
-	data: {
-		total_products: 80646,
-		country: 'US',
-		domain: 'www.amazon.com',
-		products: [
+export const amazonData = [
 			{
 				asin: 'B07RZ3LSHM',
 				product_title:
@@ -587,6 +582,4 @@ export const amazonData = [{
 					'FREE delivery Mon, Mar 23 on $35 of items shipped by AmazonOr $14.99 delivery in 3 hours',
 				has_variations: false,
 			},
-		],
-	},
-}]
+		]
