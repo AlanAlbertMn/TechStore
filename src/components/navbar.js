@@ -1,6 +1,8 @@
-import { Product } from '@/types/Product';
+'use client';
 import { Search, ShoppingCart, User, X } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
+import techLogo from '../../assets/img/TechPulseLaptopWhite.svg'
+import Image from 'next/image';
 
 const Navbar = () => {
     
@@ -10,8 +12,8 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed top-0 w-full bg-slate-950/70 backdrop-blur border-b border-slate-800 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="font-bold text-lg">TechStore</h1>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Image src={techLogo} alt='TechStore logo' width={250}/>
 
           <div className="hidden md:flex gap-6 items-center">
             <div className="flex items-center bg-slate-900 px-3 py-2 rounded-xl">

@@ -1,7 +1,11 @@
+export interface ProductsProps{
+      products: Product[]
+}
+
 export type Product = {
       asin: string | undefined | null,
       product_title: string,
-      product_price: string | undefined | null,
+      product_price?: string,
       product_original_price: string | undefined | null,
       currency: string | undefined | null,
       product_star_rating: string,
