@@ -1,13 +1,20 @@
-
+'use client'
 import Image from 'next/image';
 // import { motion } from "framer-motion";
 import { Product } from '@/types/Product';
 import { Star } from 'lucide-react';
 import {getProducts} from '@/lib/products'
+import { useContext } from 'react';
+import { useCart } from '@/lib/CartProvider';
+import {amazonData} from '../../../assets/amazonData'
 
 export default function Products() {
-	const dummyProds = getProducts();	
+	// Fix using DB as calling getProducts on client component throws error
+	// const dummyProds = getProducts();
 	
+	const dummyProds = amazonData;
+	const {cart, setCart} = useCart();
+
 	return (
 		<>
 			{dummyProds.map((product: Product) => (
@@ -32,7 +39,7 @@ export default function Products() {
 					</div>
 
 					<button
-						// onClick={() => addToCart(product)}
+						onClick={() => setCart([...cart, product])}
 						className='w-full bg-cyan-600 py-2 rounded-xl hover:bg-cyan-800'
 					>
 						Add to cart

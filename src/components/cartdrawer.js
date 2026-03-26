@@ -1,0 +1,42 @@
+import { X } from 'lucide-react';
+import React, { useState, useContext } from 'react';
+import { useCart} from '@/lib/CartProvider'
+
+const CartDrawer = ({handleCartOpen}) => {
+    const {cart} = useCart();
+
+    console.log(cart);
+    
+
+    // get cart from context for displaying it
+	// const [cart, setCart] = useState(cartContext);
+
+
+	return (
+		<div className='fixed inset-0 bg-black/50 z-50'>
+			<div className='absolute right-0 top-0 h-full w-80 bg-slate-900 p-6'>
+				<div className='flex justify-between mb-6'>
+					<h2>Cart</h2>
+					<button onClick={() => handleCartOpen(false)}>
+						<X />
+					</button>
+				</div>
+
+				{cart.length === 0 && <p>No items</p>}
+
+				{cart.map((item, i) => (
+					<div key={i} className='mb-4'>
+						<p>{item.product_title}</p>
+						<p className='text-sm text-slate-400'>{item.product_price}</p>
+					</div>
+				))}
+
+				<button className='mt-6 w-full bg-blue-500 py-3 rounded-xl'>
+					Checkout
+				</button>
+			</div>
+		</div>
+	);
+};
+
+export default CartDrawer;
