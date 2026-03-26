@@ -11,8 +11,9 @@ export default function Products() {
 	const dummyProds = getProducts();
 
 	// const dummyProds = amazonData;
-	
 
+	
+	
 	return (
 		<>
 			{dummyProds.map((product: Product) => (

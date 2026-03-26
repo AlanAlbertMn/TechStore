@@ -1,15 +1,13 @@
 import { X } from 'lucide-react';
-import { useCart} from '@/lib/CartProvider'
+import { useCart } from '@/lib/CartProvider';
 
-const CartDrawer = ({handleCartOpen}) => {
-    const {cart} = useCart();
+const CartDrawer = ({ handleCartOpen }) => {
+	const { cart } = useCart();
 
-    console.log(cart);
-    
+	console.log(cart);
 
-    // get cart from context for displaying it
+	// get cart from context for displaying it
 	// const [cart, setCart] = useState(cartContext);
-
 
 	return (
 		<div className='fixed inset-0 bg-black/50 z-50'>
@@ -24,9 +22,14 @@ const CartDrawer = ({handleCartOpen}) => {
 				{cart.length === 0 && <p>No items</p>}
 
 				{cart.map((item, i) => (
-					<div key={i} className='mb-4'>
-						<p>{`${item.product_title.substring(0, 50).trim()}...`}</p>
-						<p className='text-sm text-slate-400'>{item.product_price}</p>
+					<div key={i} className='mb-4 flex justify-center'>
+							<p>{`${item.product.product_title.substring(0, 50).trim()}...`}</p>
+							<p className='text-sm text-slate-400'>
+								{item.product.product_price}
+							</p>
+						<div>
+							<p>{item.quantity}</p>
+						</div>
 					</div>
 				))}
 
