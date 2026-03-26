@@ -3,15 +3,14 @@ import Image from 'next/image';
 // import { motion } from "framer-motion";
 import { Product } from '@/types/Product';
 import { Star } from 'lucide-react';
-import {getProducts} from '@/lib/products'
-import { useContext } from 'react';
+// import {getProducts} from '@/lib/products'
 import { useCart } from '@/lib/CartProvider';
 import {amazonData} from '../../../assets/amazonData'
 
 export default function Products() {
 	// Fix using DB as calling getProducts on client component throws error
 	// const dummyProds = getProducts();
-	
+
 	const dummyProds = amazonData;
 	const {cart, setCart} = useCart();
 

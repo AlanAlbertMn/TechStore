@@ -1,5 +1,5 @@
 'use client';
-import { Search, ShoppingCart, User, X } from 'lucide-react';
+import { Search, ShoppingCart, User} from 'lucide-react';
 import { useState } from 'react';
 import techLogo from '../../assets/img/TechPulseLaptopWhite.svg';
 import Image from 'next/image';

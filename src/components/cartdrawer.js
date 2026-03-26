@@ -1,5 +1,4 @@
 import { X } from 'lucide-react';
-import React, { useState, useContext } from 'react';
 import { useCart} from '@/lib/CartProvider'
 
 const CartDrawer = ({handleCartOpen}) => {
@@ -14,7 +13,7 @@ const CartDrawer = ({handleCartOpen}) => {
 
 	return (
 		<div className='fixed inset-0 bg-black/50 z-50'>
-			<div className='absolute right-0 top-0 h-full w-80 bg-slate-900 p-6'>
+			<div className='absolute right-0 top-0 h-full w-80 bg-slate-900 p-6 overflow-y-auto'>
 				<div className='flex justify-between mb-6'>
 					<h2>Cart</h2>
 					<button onClick={() => handleCartOpen(false)}>
@@ -26,7 +25,7 @@ const CartDrawer = ({handleCartOpen}) => {
 
 				{cart.map((item, i) => (
 					<div key={i} className='mb-4'>
-						<p>{item.product_title}</p>
+						<p>{`${item.product_title.substring(0, 50).trim()}...`}</p>
 						<p className='text-sm text-slate-400'>{item.product_price}</p>
 					</div>
 				))}
