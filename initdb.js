@@ -1,4 +1,7 @@
-export const amazonData = [
+import sql from 'better-sqlite3';
+const db = sql('products.db');
+
+const dummyAmazonData = [
 	{
 		asin: 'B0FQFB8FMG',
 		product_title:
@@ -97,7 +100,7 @@ export const amazonData = [
 		product_price: '$9.98',
 		product_original_price: '$12.96',
 		currency: 'USD',
-		product_star_rating: '4.7',
+		product_star_rating: '2.7',
 		product_num_ratings: 110699,
 		product_url: 'https://www.amazon.com/dp/B08R6S1M1K',
 		product_photo:
@@ -119,7 +122,7 @@ export const amazonData = [
 		product_price: '$14.09',
 		product_original_price: null,
 		currency: 'USD',
-		product_star_rating: '4.6',
+		product_star_rating: '3.6',
 		product_num_ratings: 18197,
 		product_url: 'https://www.amazon.com/dp/B0CPSBD68W',
 		product_photo:
@@ -536,4 +539,48 @@ export const amazonData = [
 		delivery: '$7.44 delivery Wed, Apr 1Ships to United Kingdom',
 		has_variations: false,
 	},
-];
+]
+
+//Delete when persistance is wanted
+db.prepare('DROP TABLE IF EXISTS products').run();
+
+//Populating Products Table
+db.prepare(
+	`
+   CREATE TABLE IF NOT EXISTS products (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       asin TEXT NOT NULL UNIQUE,
+       product_title TEXT NOT NULL,
+       product_photo TEXT NOT NULL,
+       product_price TEXT,
+       product_original_price TEXT,
+       product_url TEXT NOT NULL,
+       delivery TEXT,
+	   product_star_rating REAL NOT NULL,
+       product_num_ratings INT NOT NULL
+    )
+`,
+).run();
+
+async function initData() {
+	const stmt = db.prepare(`
+      INSERT INTO products VALUES (
+         null,
+         @asin,
+         @product_title,
+         @product_photo,
+         @product_price,
+         @product_original_price,
+         @product_url,
+         @delivery,
+		 @product_star_rating,
+         @product_num_ratings
+      )
+   `);
+
+	for (const product of dummyAmazonData) {
+		stmt.run(product);
+	}
+}
+
+initData();
