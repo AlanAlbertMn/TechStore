@@ -1,5 +1,5 @@
 'use client';
-import { CartProps, Product } from '@/types/Product';
+import { CartProps } from '@/types/Product';
 import { createContext, useContext, useState } from 'react';
 
 export interface SomeContextValue {

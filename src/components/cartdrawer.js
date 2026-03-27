@@ -1,17 +1,9 @@
 import { X } from 'lucide-react';
 import { useCart } from '@/lib/CartProvider';
-import { useEffect, useEffectEvent } from 'react';
+import { useEffect } from 'react';
 
 const CartDrawer = ({ handleCartOpen }) => {
     const { cart, setCart } = useCart();
-
-    console.log(cart);
-
-    // get cart from context for displaying it
-    useEffectEvent(() => {
-        setCart(JSON.parse(localStorage.getItem('cart')))
-
-    }, [])
 
     // const [cart, setCart] = useState(cartContext);
 
