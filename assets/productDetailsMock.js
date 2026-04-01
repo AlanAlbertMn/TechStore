@@ -1,4 +1,4 @@
-export default prodMock = {
+export const prodMock = {
   "status": "OK",
   "request_id": "258ed1cb-e657-41b0-bf3b-060f56aa8727",
   "parameters": {
