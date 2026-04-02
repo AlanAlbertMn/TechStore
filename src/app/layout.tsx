@@ -4,6 +4,7 @@ import "./globals.css";
 
 import {CartProvider} from '@/lib/CartProvider'
 import { ToastContainer } from "react-toastify";
+import Navbar from "@/components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,8 @@ export default function RootLayout({
     >
       <CartProvider>
 
-      <body className="min-h-full flex flex-col">
+      <body className="bg-slate-950! min-h-full flex flex-col">
+        <Navbar />
         {children}
         <ToastContainer/>
       </body>
