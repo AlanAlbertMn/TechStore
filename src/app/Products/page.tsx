@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Product } from '@/types/Product';
 import { Star } from 'lucide-react';
 import { getProducts } from '@/lib/products';
+import getHeaders from '@/lib/helpers';
 import AddToCartButton from '@/components/AddToCartButton';
 import Link from 'next/link';
 // import {amazonData} from '../../../assets/amazonData'
@@ -10,6 +11,9 @@ import Link from 'next/link';
 export default function Products() {
 	// Fix using DB as calling getProducts on client component throws error
 	const dummyProds = getProducts();
+	const headers = getHeaders();
+	console.log(headers);
+	
 
 	// const dummyProds = amazonData;
 

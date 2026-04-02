@@ -1,41 +1,42 @@
 import AddToCartButton from '@/components/AddToCartButton';
-import { getProduct } from '@/lib/products';
-import { Product } from '@/types/Product';
+import ImageCarrousel from '@/components/ImageCarrousel';
 import { Star } from 'lucide-react';
-import Image from 'next/image';
-import { prodMock } from '../../../../assets/productDetailsMock';
+// import { prodMock } from '../../../../assets/productDetailsMock';
+import axios from 'axios';
 
-async function ProductDetails({
-	params,
-}: {
-	params: Promise<{ product: string }>;
-}) {
-	// const { product } = await params;
-	// const prod: Product = await getProduct(product);
-	// console.log(prod);
-	const prod = prodMock.data;
-	// console.log(prod);
+async function ProductDetails({params}: {params: Promise<{ product: string }>}) {
+	// const prod = prodMock.data;
+	const { product } = await params;
+	console.log(product);
+
+	// To consume the api directly
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL + 'product-details';
+	const paramsForAxios = {
+		asin: product,
+		country: 'US',
+	};
+	const headers = {
+		'x-rapidapi-key': process.env.API_KEY || '',
+		'x-rapidapi-host': process.env.API_HOST || '',
+		'Content-Type': 'application/json',
+	};
+	const { data } = await axios.get(apiUrl, { headers, params: paramsForAxios });
+	console.log(data.data);
+	const prod = data.data;
 
 	return (
 		<section className='bg-slate-950/70 w-full'>
 			<div className='mx-auto w-8/12 py-36 flex gap-10'>
-				<div className='mx-auto relative w-full h-3/4'>
-					<Image
-						src={prod.product_photo}
-						alt={prod.product_title}
-						width={500}
-						height={500}
-						className='rounded'
-					/>
-                    <div className='w-full mt-6 grid grid-cols-5 gap-3'>
-				{prod.product_photos.map(photo => (
-					<Image className='w-full h-2/3 rounded' key={photo} src={photo} alt={photo} width={300} height={300} />
-				))}
-			</div>
-				</div>
+				<ImageCarrousel
+					photo={prod.product_photo}
+					title={prod.product_title}
+					photoArr={prod.product_photos}
+				/>
 				<div>
 					<div>
-						<p>{prod.product_byline}</p>
+						{prod.product_details.Brand && (
+							<p>Brand: {prod.product_details.Brand}</p>
+						)}
 						<h2 className='text-2xl font-bold py-5'>{prod.product_title}</h2>
 						<p className='py-3'>SKU: {prod.asin}</p>
 						<div className='flex items-center mb-5'>
