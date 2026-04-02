@@ -33,7 +33,7 @@ export default function RootLayout({
     >
       <CartProvider>
 
-      <body className="min-h-full flex flex-col">
+      <body className="bg-slate-950! min-h-full flex flex-col">
         <Navbar />
         {children}
         <ToastContainer/>

@@ -1,32 +1,33 @@
 import AddToCartButton from '@/components/AddToCartButton';
 import ImageCarrousel from '@/components/ImageCarrousel';
 import { Star } from 'lucide-react';
-// import { prodMock } from '../../../../assets/productDetailsMock';
-import axios from 'axios';
+import { prodMock } from '../../../../assets/productDetailsMock';
+// import axios from 'axios';
 
 async function ProductDetails({params}: {params: Promise<{ product: string }>}) {
-	// const prod = prodMock.data;
+	await new Promise((resolve) => setTimeout(resolve, 2000));
+	const prod = prodMock.data;
 	const { product } = await params;
 	console.log(product);
 
 	// To consume the api directly
-	const apiUrl = process.env.NEXT_PUBLIC_API_URL + 'product-details';
-	const paramsForAxios = {
-		asin: product,
-		country: 'US',
-	};
-	const headers = {
-		'x-rapidapi-key': process.env.API_KEY || '',
-		'x-rapidapi-host': process.env.API_HOST || '',
-		'Content-Type': 'application/json',
-	};
-	const { data } = await axios.get(apiUrl, { headers, params: paramsForAxios });
-	console.log(data.data);
-	const prod = data.data;
+	// const apiUrl = process.env.NEXT_PUBLIC_API_URL + 'product-details';
+	// const paramsForAxios = {
+	// 	asin: product,
+	// 	country: 'US',
+	// };
+	// const headers = {
+	// 	'x-rapidapi-key': process.env.API_KEY || '',
+	// 	'x-rapidapi-host': process.env.API_HOST || '',
+	// 	'Content-Type': 'application/json',
+	// };
+	// const { data } = await axios.get(apiUrl, { headers, params: paramsForAxios });
+	// console.log(data.data);
+	// const prod = data.data;
 
 	return (
 		<section className='bg-slate-950/70 w-full'>
-			<div className='mx-auto w-8/12 py-36 flex gap-10'>
+			<div className='mx-auto w-8/12 py-12 flex gap-10'>
 				<ImageCarrousel
 					photo={prod.product_photo}
 					title={prod.product_title}

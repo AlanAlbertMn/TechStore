@@ -19,7 +19,7 @@ const Navbar = () => {
 
 	return (
 		<>
-			<nav className='fixed top-0 w-full bg-slate-950/70 backdrop-blur border-b border-slate-800 z-50'>
+			<nav className='sticky top-0 w-full bg-slate-950/70 backdrop-blur border-b border-slate-800 z-50'>
 				<div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
 					<Link href='/'><Image src={techLogo} alt='TechStore logo' width={250} priority/></Link>
 
