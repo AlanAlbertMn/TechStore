@@ -1,5 +1,5 @@
 import sql from 'better-sqlite3';
-const db = sql('products.db');
+const db = sql('techpulse.db');
 
 const dummyAmazonData = [
 	{
@@ -539,10 +539,11 @@ const dummyAmazonData = [
 		delivery: '$7.44 delivery Wed, Apr 1Ships to United Kingdom',
 		has_variations: false,
 	},
-]
+];
 
 //Delete when persistance is wanted
 db.prepare('DROP TABLE IF EXISTS products').run();
+db.prepare('DROP TABLE IF EXISTS users').run();
 
 //Creating Products Table
 db.prepare(
