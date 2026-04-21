@@ -47,7 +47,9 @@ async function Navbar() {
 										{fullUser.name}
 									</p>
 								</div>
-								<LogOutButton />
+								<div className='cursor-pointer'>
+									<LogOutButton />
+								</div>
 							</>
 						)}
 						{!fullUser && (

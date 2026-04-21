@@ -1,27 +1,23 @@
 import Image from 'next/image';
-// import { motion } from "framer-motion";
 import { Product } from '@/types/Product';
 import { Star } from 'lucide-react';
 import { getProducts } from '@/lib/products';
-import getHeaders from '@/lib/helpers';
 import AddToCartButton from '@/components/AddToCartButton';
 import Link from 'next/link';
-// import {amazonData} from '../../../assets/amazonData'
+import PayNowButton from './PayNowButton';
+import { getUserFromSession } from '@/app/api/auth/core/session';
+import { sessionSchema } from '@/types/User';
 
-export default function ProductsGrid() {
-	// Fix using DB as calling getProducts on client component throws error
+export default async function ProductsGrid() {
+	const user = (await getUserFromSession()) as sessionSchema;
 	const dummyProds = getProducts() as Product[];
-	const headers = getHeaders();
-	console.log(headers);
-
-	// const dummyProds = amazonData;
 
 	return (
 		<>
 			{dummyProds.map((product: Product) => (
 				<div
 					key={product.asin}
-					className='bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-800 cursor-pointer flex flex-col justify-between'
+					className='bg-white dark:bg-slate-900 py-2 px-4 rounded-2xl border border-slate-800 cursor-pointer flex flex-col justify-between'
 				>
 					<Link href={`/products/${product.asin}`}>
 						<Image
@@ -46,6 +42,7 @@ export default function ProductsGrid() {
 						</div>
 					</Link>
 					<AddToCartButton product={product} />
+					{user && <PayNowButton userId={user.userId} product={product} />}
 				</div>
 			))}
 		</>
