@@ -12,7 +12,7 @@ async function Navbar() {
 
 	return (
 		<>
-			<nav className='sticky top-0 w-full bg-[#F8FAFC] dark:bg-slate-950/70 backdrop-blur border-b border-slate-800 z-50'>
+			<nav className='sticky top-0 w-full shadow-md shadow-slate-200 dark:shadow-slate-400 backdrop-blur-xl bg-white dark:bg-slate-950/70 border-b-0 z-50'>
 				<div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
 					<Link href='/'>
 						<Image

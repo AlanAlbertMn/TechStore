@@ -3,7 +3,7 @@
 import { Product } from '@/types/Product';
 import { redirect } from 'next/navigation';
 
-const PayNowButton = ({
+const BuyNowButton = ({
 	product,
 	userId,
 }: {
@@ -13,7 +13,7 @@ const PayNowButton = ({
 	const handlePay = async () => {
 		const res = await fetch('/api/checkout', {
 			method: 'POST',
-			body: JSON.stringify({ product, userId }),
+			body: JSON.stringify({ cart: [{ product, quantity: 1 }], userId }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -25,11 +25,11 @@ const PayNowButton = ({
 	return (
 		<button
 			onClick={() => handlePay()}
-			className='w-full text-white bg-[#2563EB] hover:bg-[#1a4196] rounded-xl h-10 mt-1'
+			className='w-full text-white bg-[#2563EB] hover:bg-[#1a4196] rounded-4xl h-10 mt-1'
 		>
-			Pay now
+			Buy now
 		</button>
 	);
 };
 
-export default PayNowButton;
+export default BuyNowButton;

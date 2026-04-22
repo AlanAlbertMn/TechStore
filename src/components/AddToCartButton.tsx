@@ -52,7 +52,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
 	return (
 		<button
 			onClick={() => handleAddCart()}
-			className='w-full text-white bg-[#2563EB] hover:bg-[#1a4196] rounded-xl h-10'
+			className='w-full mb-2 text-white bg-[#2563EB] hover:bg-[#1a4196] rounded-4xl h-10'
 		>
 			Add to cart
 		</button>

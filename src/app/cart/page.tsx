@@ -67,7 +67,7 @@ const CartDrawer = () => {
 	};
 
 	return (
-		<div className='right-0 top-0 h-full w-xl mx-auto bg-slate-900 py-6 flex flex-col items-center'>
+		<div className='right-0 top-0 h-full w-xl mx-auto dark:bg-slate-900 py-6 flex flex-col items-center'>
 			{cart.length === 0 && <h3 className='text-center text-4xl'>No items</h3>}
 
 			{cart.map((item, i) => (
@@ -123,7 +123,7 @@ const CartDrawer = () => {
 							.toFixed(2)}
 					</p>
 					<button
-						className='mt-6 w-2/3 bg-blue-500 py-3 rounded-xl cursor-pointer'
+						className='mt-6 w-2/3 bg-blue-500 text-white py-3 rounded-xl cursor-pointer'
 						onClick={() => handlePay()}
 					>
 						Checkout

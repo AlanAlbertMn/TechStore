@@ -4,9 +4,9 @@ import { Star } from 'lucide-react';
 import { getProducts } from '@/lib/products';
 import AddToCartButton from '@/components/AddToCartButton';
 import Link from 'next/link';
-import PayNowButton from './PayNowButton';
 import { getUserFromSession } from '@/app/api/auth/core/session';
 import { sessionSchema } from '@/types/User';
+import BuyNowButton from './BuyNowButton';
 
 export default async function ProductsGrid() {
 	const user = (await getUserFromSession()) as sessionSchema;
@@ -17,7 +17,7 @@ export default async function ProductsGrid() {
 			{dummyProds.map((product: Product) => (
 				<div
 					key={product.asin}
-					className='bg-white dark:bg-slate-900 py-2 px-4 rounded-2xl border border-slate-800 cursor-pointer flex flex-col justify-between'
+					className='flex flex-col justify-between p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-800 cursor-pointer'
 				>
 					<Link href={`/products/${product.asin}`}>
 						<Image
@@ -25,24 +25,26 @@ export default async function ProductsGrid() {
 							alt={product.product_title}
 							height={300}
 							width={300}
-							className='rounded-xl mb-2 size-full max-h-44'
+							className='rounded-xl mb-2 max-h-36 lg:max-h-40'
 						/>
 
-						<h3 className='font-semibold mt-2'>{`${product.product_title.split(' ').slice(0, 8).join(' ')}...`}</h3>
+						<h3 className='font-semibold mt-2'>{`${product.product_title.substring(0, 60)}...`}</h3>
 
 						<p className='text-[#013f6b] dark:text-blue-400'>
 							{product.product_price}
 						</p>
 
-						<div className='flex items-center mb-3'>
+						<div className='flex flex-row items-center mb-3'>
 							<p className='mr-1'>{product.product_star_rating}</p>
 							{[...Array(parseInt(product.product_star_rating))].map((_, i) => (
 								<Star key={i} size={14} fill='gold' strokeWidth={0} />
 							))}
 						</div>
 					</Link>
-					<AddToCartButton product={product} />
-					{user && <PayNowButton userId={user.userId} product={product} />}
+					<div className='flex flex-col w-full'>
+						<AddToCartButton product={product} />
+						{user && <BuyNowButton userId={user.userId} product={product} />}
+					</div>
 				</div>
 			))}
 		</>

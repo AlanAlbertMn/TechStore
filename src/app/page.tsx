@@ -2,7 +2,7 @@ import ProductsGrid from '@/components/ProductsGrid';
 
 export default async function Ecommerce() {
 	return (
-		<div className='bg-[#F8FAFC] text-slate-950/50 dark:bg-slate-950/70 dark:text-slate-200 min-h-screen'>
+		<div className='bg-[#FAFAFA] text-slate-950/50 dark:bg-slate-950/70 dark:text-slate-200 min-h-screen mx-auto w-3/4'>
 			{/* HERO */}
 			<section className='pt-64 mb-10 text-center px-6'>
 				<h1 className='text-5xl font-bold mb-6 text-slate-600 dark:text-slate-200'>
@@ -23,7 +23,7 @@ export default async function Ecommerce() {
 				<h2 className='text-3xl my-10 text-[#013f6b] dark:text-slate-50'>
 					Trending Products
 				</h2>
-				<div className='grid md:grid-cols-4 gap-6'>
+				<div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6'>
 					<ProductsGrid />
 				</div>
 			</section>
