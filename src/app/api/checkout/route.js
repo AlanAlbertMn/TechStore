@@ -3,6 +3,8 @@ import Stripe from 'stripe';
 const stripeClient = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request) {
+	console.log(request);
+
 	const body = await request.json();
 
 	console.log(body);

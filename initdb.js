@@ -543,8 +543,9 @@ const dummyAmazonData = [
 
 //Delete when persistance is wanted
 db.prepare('DROP TABLE IF EXISTS products').run();
-db.prepare('DROP TABLE IF EXISTS users').run();
+// db.prepare('DROP TABLE IF EXISTS users').run();
 db.prepare('DROP TABLE IF EXISTS sessions').run();
+db.prepare('DROP TABLE IF EXISTS order_items').run();
 db.prepare('DROP TABLE IF EXISTS orders').run();
 
 //Creating Products Table
@@ -600,6 +601,7 @@ db.prepare(
 		user_id INTEGER NOT NULL,
 		total_amount REAL NOT NULL,
 		status TEXT DEFAULT 'pending',
+		payment_method TEXT NOT NULL,
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (user_id) REFERENCES users(id)
 	)
@@ -640,6 +642,50 @@ async function initData() {
 
 	for (const product of dummyAmazonData) {
 		stmt.run(product);
+	}
+
+	const cart = [
+		{
+			id: 'prod_1',
+			name: 'Headphones',
+			price: 199,
+			quantity: 2,
+			image: 'url',
+		},
+		{
+			id: 'prod_2',
+			name: 'Handy',
+			price: 1999,
+			quantity: 1,
+			image: 'url',
+		},
+	];
+
+	// 🧾 4. crear orden
+	const result = db
+		.prepare(
+			`INSERT INTO orders (user_id, total_amount, status, payment_method)
+       VALUES (?, ?, ?, ?)`,
+		)
+		.run(1, 500, 'paid', 'card');
+
+	const orderId = result.lastInsertRowid;
+	console.log(orderId);
+
+	// 🛒 5. insertar productos (snapshot)
+	for (const item of cart) {
+		db.prepare(
+			`INSERT INTO order_items 
+        (order_id, product_id, name, price, quantity, image)
+        VALUES (?, ?, ?, ?, ?, ?)`,
+		).run(
+			orderId,
+			item.id,
+			item.name,
+			item.price,
+			item.quantity,
+			item.image || '',
+		);
 	}
 }
 
