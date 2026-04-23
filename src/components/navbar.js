@@ -1,4 +1,11 @@
-import { LogIn, User } from 'lucide-react';
+import {
+	LogIn,
+	User,
+	User2,
+	UserCircle,
+	UserCircle2,
+	UserX2,
+} from 'lucide-react';
 import techLogoWhite from '../../assets/img/TechPulseLaptopWhite.svg';
 import techLogo from '../../assets/img/TechPulseLaptop.svg';
 import Image from 'next/image';
@@ -12,7 +19,7 @@ async function Navbar() {
 
 	return (
 		<>
-			<nav className='sticky top-0 w-full shadow-md outline-2 outline-[#253648] backdrop-blur-xl bg-white dark:bg-slate-950/70 border-b-0 z-50'>
+			<nav className='sticky top-0 w-full shadow-md outline-2 outline-zinc-200 dark:outline-[#253648] backdrop-blur-xl bg-white dark:bg-slate-950/70 border-b-0 z-50'>
 				<div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
 					<Link href='/'>
 						<Image
@@ -41,9 +48,9 @@ async function Navbar() {
 						</div> */}
 						{fullUser && (
 							<>
-								<div className='flex gap-1 justify-center'>
-									<User />
-									<p className='text-[#013f6b] dark:text-slate-50 font-bold'>
+								<div className='flex gap-1 justify-center items-center'>
+									<UserCircle2 color='#2563EB' size={30} />
+									<p className='text-[#2563EB] dark:text-slate-50 font-bold'>
 										{fullUser.name}
 									</p>
 								</div>
@@ -55,7 +62,7 @@ async function Navbar() {
 						{!fullUser && (
 							<div className='flex-nowrap'>
 								<Link href='/login'>
-									<LogIn size={30} />
+									<LogIn color='#2563EB' size={30} />
 								</Link>
 							</div>
 						)}

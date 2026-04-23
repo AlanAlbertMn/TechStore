@@ -17,7 +17,7 @@ export default async function ProductsGrid() {
 			{dummyProds.map((product: Product) => (
 				<div
 					key={product.asin}
-					className='flex flex-col justify-between p-4 bg-white dark:bg-[#182534] rounded-2xl outline-2 outline-[#253648] cursor-pointer'
+					className='flex flex-col justify-between p-4 bg-white dark:bg-[#182534] rounded-2xl outline-2 dark:outline-[#253648] outline-zinc-200 cursor-pointer'
 				>
 					<Link href={`/products/${product.asin}`}>
 						<Image

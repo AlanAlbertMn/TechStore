@@ -4,8 +4,8 @@ export default async function Ecommerce() {
 	return (
 		<div className='w-full dark:bg-slate-950'>
 			{/* HERO */}
-			<section className='py-32 w-full text-center dark:bg-[#182534] px-6 outline-2 outline-[#253648]'>
-				<h1 className='text-5xl font-bold mb-6 text-slate-600 dark:text-slate-200'>
+			<section className='py-32 w-full text-center dark:bg-[#182534] px-6 outline-2 outline-zinc-200 dark:outline-[#253648]'>
+				<h1 className='text-5xl font-bold mb-6 text-[#3d7aff] dark:text-slate-200'>
 					Discover the Future of Tech
 				</h1>
 
@@ -29,8 +29,9 @@ export default async function Ecommerce() {
 				</section>
 			</section>
 			{/* FOOTER */}
-			<footer className='text-center text-slate-500 py-10 border-t border-slate-800'>
-				© 2026 TechStore
+			<footer className='text-center text-white py-10 bg-[#3d7aff] outline-2 outline-zinc-200 dark:outline-[#253648] flex justify-around h-10 items-center'>
+				<p>© 2026 TechStore</p>
+				<p>by Alan Albert</p>
 			</footer>
 		</div>
 	);
