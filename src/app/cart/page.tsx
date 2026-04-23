@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 
 const CartDrawer = () => {
 	const [userId, setUserId] = useState<number>();
+	const { cart, setCart } = useCart();
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -25,7 +27,9 @@ const CartDrawer = () => {
 		fetchData();
 	}, []);
 
-	const { cart, setCart } = useCart();
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify(cart));
+	}, [cart]);
 
 	const handlePay = async () => {
 		const res = await fetch('/api/checkout', {
