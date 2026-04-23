@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Roboto, Roboto_Mono } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import './globals.css';
 
 import { CartProvider } from '@/lib/CartProvider';
@@ -7,10 +7,6 @@ import { ToastContainer } from 'react-toastify';
 import Navbar from '@/components/navbar';
 
 const robotoSans = Roboto({
-	subsets: ['latin'],
-});
-
-const robotoMono = Roboto_Mono({
 	subsets: ['latin'],
 });
 

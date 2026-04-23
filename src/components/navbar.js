@@ -1,11 +1,4 @@
-import {
-	LogIn,
-	User,
-	User2,
-	UserCircle,
-	UserCircle2,
-	UserX2,
-} from 'lucide-react';
+import { LogIn, UserCircle2 } from 'lucide-react';
 import techLogoWhite from '../../assets/img/TechPulseLaptopWhite.svg';
 import techLogo from '../../assets/img/TechPulseLaptop.svg';
 import Image from 'next/image';
