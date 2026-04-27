@@ -17,15 +17,15 @@ export default function ShoppingCart() {
 		<button onClick={() => redirect('/cart')}>
 			{cart.length != 0 && (
 				<span className='cursor-pointer absolute flex size-4'>
-					<span className='cursor-pointer absolute left-2.5 inline-flex size-4 h-full w-full animate-ping rounded-full bg-sky-400 opacity-75'></span>
 					<p
-						className={`cursor-pointer absolute left-11/12 z-50 text-white text-xs font-bold`}
+						className={`cursor-pointer absolute left-full -translate-x-0.5 z-50 text-white text-xs font-bold`}
 					>
 						{cart.reduce(
 							(totalItems, currItem) => totalItems + currItem.quantity,
 							0,
 						)}
 					</p>
+					<span className='cursor-pointer absolute left-2.5 inline-flex size-4 h-full w-full animate-ping rounded-full bg-sky-400 opacity-75'></span>
 					<span className='absolute left-2.5 inline-flex size-4 rounded-full bg-sky-500'></span>
 				</span>
 			)}

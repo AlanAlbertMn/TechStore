@@ -9,8 +9,9 @@ export async function POST(request) {
 		price_data: {
 			currency: 'usd',
 			product_data: {
-				name: item.product.product_title,
+				name: item.product.product_title.split(' ').slice(0, 5).join(' '),
 				images: [item.product.product_photo],
+				metadata: { productId: item.product.id },
 			},
 			unit_amount: Math.round(
 				parseFloat(item.product.product_price.replace('$', '')) * 100,
@@ -25,7 +26,7 @@ export async function POST(request) {
 		line_items: stripeCart,
 		mode: 'payment',
 		metadata: {
-			cart: JSON.stringify(body.stripeCart),
+			cart: JSON.stringify(stripeCart),
 			userId: body.userId,
 		},
 	});

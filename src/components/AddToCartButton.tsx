@@ -38,7 +38,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
 		localStorage.setItem('cart', JSON.stringify(cart));
 		toast.success(`${titleArray}... has been added to the cart`, {
 			position: 'bottom-right',
-			autoClose: 5000,
+			autoClose: 3000,
 			hideProgressBar: false,
 			closeOnClick: true,
 			pauseOnHover: false,

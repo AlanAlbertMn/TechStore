@@ -80,6 +80,7 @@ const CartDrawer = () => {
 					className='py-10 w-2/3 flex gap-12 border-b border-slate-600'
 				>
 					<Image
+						className='max-h-72 max-w-48 object-scale-down'
 						src={item.product.product_photo}
 						alt={item.product.product_title}
 						width={350}

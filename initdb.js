@@ -643,50 +643,6 @@ async function initData() {
 	for (const product of dummyAmazonData) {
 		stmt.run(product);
 	}
-
-	const cart = [
-		{
-			id: 'prod_1',
-			name: 'Headphones',
-			price: 199,
-			quantity: 2,
-			image: 'url',
-		},
-		{
-			id: 'prod_2',
-			name: 'Handy',
-			price: 1999,
-			quantity: 1,
-			image: 'url',
-		},
-	];
-
-	// 🧾 4. crear orden
-	const result = db
-		.prepare(
-			`INSERT INTO orders (user_id, total_amount, status, payment_method)
-       VALUES (?, ?, ?, ?)`,
-		)
-		.run(1, 500, 'paid', 'card');
-
-	const orderId = result.lastInsertRowid;
-	console.log(orderId);
-
-	// 🛒 5. insertar productos (snapshot)
-	for (const item of cart) {
-		db.prepare(
-			`INSERT INTO order_items 
-        (order_id, product_id, name, price, quantity, image)
-        VALUES (?, ?, ?, ?, ?, ?)`,
-		).run(
-			orderId,
-			item.id,
-			item.name,
-			item.price,
-			item.quantity,
-			item.image || '',
-		);
-	}
 }
 
 initData();
