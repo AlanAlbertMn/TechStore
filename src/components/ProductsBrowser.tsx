@@ -5,6 +5,7 @@ import type { Product } from '@prisma/client';
 import ProductCard from './ProductCard';
 import type { sessionSchema } from '@/types/User';
 import type { SortOption } from '@/types/Sort';
+import { Search } from 'lucide-react';
 
 type ProductsBrowserProps = {
 	products: Product[];
@@ -56,28 +57,40 @@ export default function ProductsBrowser({
 	return (
 		<>
 			<div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
-				<h2 className='my-6 text-3xl font-bold text-[#013f6b] dark:text-slate-50'>
-					Trending Products
-				</h2>
+				{debouncedSearch ? (
+					<h2 className='my-6 text-2xl'>
+						Results for:{' '}
+						<span className='font-semibold'>{debouncedSearch}</span>
+					</h2>
+				) : (
+					<h2 className='my-6 text-2xl font-bold text-[#013f6b] dark:text-slate-50'>
+						Trending Products
+					</h2>
+				)}
 
 				<div className='flex flex-col gap-3 sm:flex-row'>
-					<input
-						value={searchTerm}
-						onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-							setSearchTerm(event.target.value)
-						}
-						placeholder='Search in TechPulse'
-						type='text'
-						className='rounded-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 px-4 h-12 text-sm text-slate-600 dark:text-slate-200 outline-none hover:border-amber-500'
-					/>
-
+					<div className='flex items-center hover:border-amber-300'>
+						<Search
+							className='rounded-l-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 outline-none w-12 h-12 p-3'
+							size={20}
+						/>
+						<input
+							value={searchTerm}
+							onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+								setSearchTerm(event.target.value)
+							}
+							placeholder='Search in TechPulse'
+							type='text'
+							className='rounded-r-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 px-4 h-12 text-sm text-slate-600 dark:text-slate-200 outline-none'
+						/>
+					</div>
 					<select
 						value={sortBy}
 						onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
 							setSortBy(event.target.value as SortOption)
 						}
 						spellCheck='false'
-						className='rounded-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 px-4 h-12 text-sm text-slate-600 dark:text-slate-200 outline-none hover:border-amber-500'
+						className='rounded-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 px-4 h-12 text-sm text-slate-600 dark:text-slate-200 outline-none'
 					>
 						<option value='featured'>Featured</option>
 						<option value='price-asc'>Price: Low to High</option>
