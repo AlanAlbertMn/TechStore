@@ -12,7 +12,6 @@ export default async function ProductsGrid({
 }) {
 	const user = (await getUserFromSession()) as sessionSchema;
 	const dummyProds = (await getProducts()) as Product[];
-	console.log(sortBy);
 
 	let sorted = dummyProds;
 	if (sortBy && sortBy !== 'featured') {

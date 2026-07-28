@@ -12,9 +12,7 @@ async function ProductDetails({
 	params: Promise<{ product: string }>;
 }) {
 	const { product } = await params;
-	console.log(product);
 	let prod = (await getProduct(product)) as Product;
-	console.log(prod);
 
 	if (prod.images.length === 0) {
 		// To consume the api directly
@@ -32,9 +30,7 @@ async function ProductDetails({
 			headers,
 			params: paramsForAxios,
 		});
-		console.log(data.data);
 		const productDets = data.data;
-		console.log(productDets);
 		const productForUpdate: ProductDetails = {
 			asin: productDets.asin,
 			thumbnail: productDets.product_photo,
@@ -53,9 +49,7 @@ async function ProductDetails({
 			about_product: productDets.about_product || undefined,
 			brand: productDets.product_details.Brand || undefined,
 		};
-		console.log(productForUpdate);
 		//fetch from API and save into db
-		console.log('images = 0');
 		prod = await updateProductWithDetails(productForUpdate);
 	} else console.log(prod.images);
 

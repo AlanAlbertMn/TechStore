@@ -37,3 +37,8 @@ export type sessionSchema = {
 	userRole: string;
 	lastSeenAt: Date;
 };
+
+export type RedisUser = {
+	userId: number;
+	userRole: string;
+};

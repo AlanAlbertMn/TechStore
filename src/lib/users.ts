@@ -21,19 +21,8 @@ export async function createUserSessionDB(
 	userRole: string,
 ) {
 	await prisma.session.create({ data: { sessionId, userId, userRole } });
-	// db.prepare(
-	// 	'INSERT INTO sessions (sessionId, userId, userRole) VALUES (?, ?, ?)',
-	// ).run(sessionId, userId.toString(), userRole);
-}
-
-export async function findUserFromSessionId(sessionId: string) {
-	return await prisma.session.findFirst({ where: { sessionId } });
-	// return db
-	// 	.prepare('SELECT * FROM sessions WHERE sessionId = ?')
-	// 	.get(sessionId);
 }
 
 export async function deleteUserSessionDB(sessionId: string) {
 	await prisma.session.delete({ where: { sessionId } });
-	// db.prepare('DELETE FROM sessions WHERE sessionId = ?').run(sessionId);
 }

@@ -29,7 +29,6 @@ const RegisterPage = () => {
 	} = useForm<signUpSchema>({ resolver });
 
 	async function onSubmit(data: signUpSchema) {
-		// console.log(data);
 		const user = await signUp(data);
 		if (
 			user === 'Account already exists for this email' ||

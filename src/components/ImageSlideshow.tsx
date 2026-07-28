@@ -11,15 +11,12 @@ export default function ImageSlideshow() {
 	const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
 	const goToNextSlide = () => {
-		console.log(intervalRef.current);
-
 		setCurrentIndex((prevIndex) =>
 			prevIndex === slides.length - 1 ? 0 : prevIndex + 1,
 		);
 	};
 
 	const goToPreviousSlide = () => {
-		console.log(intervalRef.current);
 		setCurrentIndex((prevIndex) =>
 			prevIndex === 0 ? slides.length - 1 : prevIndex - 1,
 		);
