@@ -10,7 +10,7 @@ const userOrders = async () => {
 	console.log(orders);
 
 	return (
-		<div className='w-2/3 mx-auto pt-5 grid gap-4'>
+		<div className='md:w-2/3 mx-auto pt-5 px-4 grid gap-4'>
 			{orders.map((order) => (
 				<OrderCard key={order.id} {...order} />
 			))}

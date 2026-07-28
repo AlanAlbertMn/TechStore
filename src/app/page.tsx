@@ -11,7 +11,7 @@ export default async function Ecommerce() {
 	return (
 		<div className='w-full dark:bg-slate-950'>
 			{/* HERO */}
-			<section className='px-4 py-8 sm:px-6 lg:px-8'>
+			<section className='p-4'>
 				<ImageSlideshow />
 			</section>
 			<section className='min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 mb-5'>

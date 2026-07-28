@@ -56,7 +56,7 @@ export default function ProductsBrowser({
 
 	return (
 		<>
-			<div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
+			<div className='flex flex-col p-4 sm:flex-row sm:items-center sm:justify-between'>
 				{debouncedSearch ? (
 					<h2 className='my-6 text-2xl'>
 						Results for:{' '}
@@ -68,7 +68,7 @@ export default function ProductsBrowser({
 					</h2>
 				)}
 
-				<div className='flex flex-col gap-3 sm:flex-row'>
+				<div className='flex flex-col sm:flex-row gap-2'>
 					<div className='flex items-center hover:border-amber-300'>
 						<Search
 							className='rounded-l-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 outline-none w-12 h-12 p-3'
@@ -84,25 +84,27 @@ export default function ProductsBrowser({
 							className='rounded-r-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 px-4 h-12 text-sm text-slate-600 dark:text-slate-200 outline-none'
 						/>
 					</div>
-					<select
-						value={sortBy}
-						onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
-							setSortBy(event.target.value as SortOption)
-						}
-						spellCheck='false'
-						className='rounded-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 px-4 h-12 text-sm text-slate-600 dark:text-slate-200 outline-none'
-					>
-						<option value='featured'>Featured</option>
-						<option value='price-asc'>Price: Low to High</option>
-						<option value='price-desc'>Price: High to Low</option>
-						<option value='rating-desc'>Highest Rated</option>
-						<option value='name-asc'>Name: A-Z</option>
-					</select>
+					<div className='py-3 md:px-2 md:py-0'>
+						<select
+							value={sortBy}
+							onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+								setSortBy(event.target.value as SortOption)
+							}
+							spellCheck='false'
+							className='rounded-xl border border-slate-400 dark:border-slate-800 dark:bg-slate-900 px-4 h-12 text-sm text-slate-600 dark:text-slate-200 outline-none'
+						>
+							<option value='featured'>Featured</option>
+							<option value='price-asc'>Price: Low to High</option>
+							<option value='price-desc'>Price: High to Low</option>
+							<option value='rating-desc'>Highest Rated</option>
+							<option value='name-asc'>Name: A-Z</option>
+						</select>
+					</div>
 				</div>
 			</div>
 
 			{filteredAndSortedProducts.length === 0 ? (
-				<div className='rounded-3xl border bg-slate-50 text-slate-900 dark:border-slate-800 dark:bg-slate-900 p-10 text-center'>
+				<div className='rounded-3xl border m-4 bg-slate-50 text-slate-900 dark:border-slate-800 dark:bg-slate-900 py-7 text-center'>
 					<p className='text-lg font-semibold dark:text-slate-100'>
 						{`No products including '${searchTerm}'`}
 					</p>
@@ -112,7 +114,7 @@ export default function ProductsBrowser({
 					</p>
 				</div>
 			) : (
-				<div className='grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4'>
+				<div className='grid grid-cols-1 px-4 gap-6 sm:grid-cols-3 lg:grid-cols-4'>
 					{filteredAndSortedProducts.map((product) => (
 						<ProductCard key={product.id} product={product} user={user} />
 					))}
