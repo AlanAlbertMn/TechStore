@@ -18,24 +18,23 @@ async function Navbar() {
 						<Image
 							src={techLogoWhite}
 							alt='TechStore logo'
-							className='hidden dark:block'
-							width={250}
+							className='hidden dark:block w-3/4 md:w-1/4'
 							priority
 						/>
 						<Image
 							src={techLogo}
 							alt='TechStore logo'
 							className='dark:hidden'
-							width={250}
+							width={200}
 							priority
 						/>
 					</Link>
 
-					<div className='hidden md:flex gap-6 items-center'>
+					<div className='flex gap-3 items-center justify-end'>
 						{fullUser && (
 							<>
 								<div className='flex gap-1 justify-center items-center'>
-									<UserCircle2 color='#0369A1' size={30} />
+									<UserCircle2 color='#2563EB' className='size-5 md:size-9' />
 									<Link
 										href='/userOrders'
 										className='text-sky-900 dark:text-slate-50 font-bold'
@@ -51,7 +50,7 @@ async function Navbar() {
 						{!fullUser && (
 							<div className='flex-nowrap'>
 								<Link href='/login'>
-									<LogIn color='#0369A1' size={30} />
+									<LogIn color='#2563EB' className='size-5 md:size-8' />
 								</Link>
 							</div>
 						)}

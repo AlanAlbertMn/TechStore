@@ -10,7 +10,7 @@ export default function LogOutButton() {
 				logOut().finally(redirect('/'));
 			}}
 			color='#2563EB'
-			size={25}
+			className='size-5 md:size-8'
 		/>
 	);
 }
