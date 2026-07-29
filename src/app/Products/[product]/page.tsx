@@ -56,7 +56,7 @@ async function ProductDetails({
 	return (
 		<section className='bg-[#F8FAFC] text-slate-950/50 dark:bg-slate-950/70 w-full'>
 			{prod && (
-				<div className='mx-auto w-8/12 py-12 flex gap-10'>
+				<div className='mx-auto w-11/12 mb-4 md:py-12 flex flex-col md:flex-row gap-10'>
 					<ImageCarrousel
 						photo={prod.thumbnail}
 						title={prod.title}
@@ -67,7 +67,7 @@ async function ProductDetails({
 							{/* {prod.product_details.Brand && (
 							<p>Brand: {prod.product_details.Brand}</p>
 						)} */}
-							<h2 className='text-2xl font-semibold py-3 max-w-175 leading-tight text-[#013f6b] dark:text-slate-200'>
+							<h2 className='md:text-2xl font-semibold pb-3 max-w-175 leading-tight text-[#013f6b] dark:text-slate-200'>
 								{prod.title}
 							</h2>
 							{prod.brand && (
@@ -111,7 +111,7 @@ async function ProductDetails({
 									</p>
 								)}
 								<div className='w-full flex flex-col items-end'>
-									<div className='w-96'>
+									<div className='w-full'>
 										<AddToCartButton product={prod} />
 									</div>
 								</div>

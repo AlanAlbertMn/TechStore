@@ -31,7 +31,7 @@ export default function ShoppingCart() {
 			)}
 			<ShoppingCartIcon
 				color='#2563EB'
-				className='cursor-pointer size-5 md:size-8'
+				className='cursor-pointer size-7 md:size-8'
 			/>
 		</button>
 	);
