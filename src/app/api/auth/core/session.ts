@@ -33,7 +33,7 @@ async function getUserSessionById(sessionId: string) {
 export async function createUserSession(user: User) {
 	const sessionId = crypto.randomBytes(512).toString('hex').normalize();
 	//Save in redis
-	redisClient.set(
+	await redisClient.set(
 		`session:${sessionId}`,
 		{ userId: user.id, userRole: user.role },
 		{ ex: SESSION_EXPIRATION_DAYS },
@@ -51,7 +51,6 @@ export async function deleteUserSession() {
 	const cookieStore = await cookies();
 	const sessionId = cookieStore.get('sessionId')?.value;
 	if (sessionId == null) return null;
-
+	await redisClient.del(`session:${sessionId}`);
 	cookieStore.delete('sessionId');
-	redisClient.del(`session:${sessionId}`);
 }

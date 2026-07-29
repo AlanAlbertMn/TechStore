@@ -6,9 +6,10 @@ import Link from 'next/link';
 import ShoppingCart from './ShoppingCart';
 import { getUserFromSession } from '@/app/api/auth/core/session';
 import LogOutButton from './LogOutButton';
+import { User } from '@prisma/client';
 
 async function Navbar() {
-	const fullUser = await getUserFromSession({ withFullUser: true });
+	const fullUser = (await getUserFromSession(true)) as User;
 
 	return (
 		<>
@@ -39,7 +40,7 @@ async function Navbar() {
 										href='/userOrders'
 										className='text-sky-900 dark:text-slate-50 font-bold text-xl'
 									>
-										{fullUser.name}
+										{fullUser.name.split(' ')[0]}
 									</Link>
 								</div>
 								<div className='cursor-pointer'>
