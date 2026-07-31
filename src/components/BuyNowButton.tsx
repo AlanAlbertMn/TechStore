@@ -26,7 +26,7 @@ const BuyNowButton = ({
 	return (
 		<button
 			onClick={() => handlePay()}
-			className='w-full text-white bg-[#2563EB] hover:bg-[#1a4196] rounded-xl h-10 mt-1'
+			className='w-full text-white transition-all font-medium bg-sky-700 hover:bg-sky-800 hover:scale-[1.02] rounded-xl h-10 mt-1'
 		>
 			Buy now
 		</button>

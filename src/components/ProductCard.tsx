@@ -13,6 +13,8 @@ const ProductCard = ({
 	product: Product;
 	user: sessionSchema;
 }) => {
+	// console.log(user);
+
 	return (
 		<div
 			key={product.asin}
@@ -31,7 +33,7 @@ const ProductCard = ({
 				<h3 className='font-semibold mt-2'>{`${product.title.substring(0, 75)}...`}</h3>
 
 				<div className='flex gap-1 items-center'>
-					<p className='text-xl text-sky-800 font-medium dark:text-sky-600'>
+					<p className='text-xl text-sky-800 font-medium dark:text-blue-500'>
 						${product.price.toFixed(2)}
 					</p>
 					{product.original_price && (

@@ -9,6 +9,9 @@ import {
 } from '../core/passwordHasher';
 import { createUserSession, deleteUserSession } from '../core/session';
 
+export const EXISTING_ACCOUNT =
+	'Account already exists for this email. Login instead.';
+
 export async function signIn(unsafeData: signInSchema) {
 	const user = await getUser(unsafeData.email);
 	if (!user) return 'Unable to log you in';
@@ -27,7 +30,7 @@ export async function signIn(unsafeData: signInSchema) {
 export async function signUp(unsafeData: signUpSchema) {
 	const existingUser = await getUser(unsafeData.email);
 	if (existingUser) {
-		return 'Account already exists for this email';
+		return EXISTING_ACCOUNT;
 	}
 
 	try {

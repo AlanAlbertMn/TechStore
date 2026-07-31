@@ -6,7 +6,8 @@ import { CartProps } from '@/types/Product';
 import { redirect } from 'next/navigation';
 import { getUserFromSession } from '../api/auth/core/session';
 import { useEffect, useState } from 'react';
-import { UserSchema } from '@/types/User';
+import { sessionSchema } from '@/types/User';
+import { toast } from 'react-toastify';
 
 const CartDrawer = () => {
 	const [userId, setUserId] = useState<number>();
@@ -15,9 +16,9 @@ const CartDrawer = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = (await getUserFromSession()) as UserSchema;
+				const response = (await getUserFromSession()) as sessionSchema;
 				if (response) {
-					setUserId(response.id);
+					setUserId(response.userId);
 				}
 			} catch (error) {
 				console.error(error);
@@ -32,6 +33,20 @@ const CartDrawer = () => {
 	}, [cart]);
 
 	const handlePay = async () => {
+		console.log('userId', userId);
+
+		if (userId == null) {
+			toast.info(
+				'Please create an account first to keep track of your order. Or login if you already have an account.',
+				{
+					position: 'bottom-right',
+					autoClose: 5000,
+					closeOnClick: true,
+				},
+			);
+			redirect('/register');
+		}
+
 		const res = await fetch('/api/checkout', {
 			method: 'POST',
 			body: JSON.stringify({ cart, userId }),

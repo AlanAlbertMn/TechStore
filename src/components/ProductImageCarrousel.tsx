@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-const ImageCarrousel = ({
+const ProductImageCarrousel = ({
 	photo,
 	title,
 	photoArr,
@@ -19,7 +19,7 @@ const ImageCarrousel = ({
 
 	return (
 		<div className='mx-auto w-full md:w-1/2'>
-			<div className='relative my-4 md:mb-4 h-11/12'>
+			<div className='relative my-4 md:mb-20 max-h-2/3'>
 				<Image
 					alt={title}
 					className='rounded h-96'
@@ -30,10 +30,10 @@ const ImageCarrousel = ({
 				/>
 			</div>
 			{photoArr && (
-				<div className='w-full grid grid-cols-3 md:grid-cols-7 gap-3'>
+				<div className='w-full grid grid-cols-3 md:grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3'>
 					{photoArr.map((photo) => (
 						<Image
-							className='w-full h-full max-h-96 rounded overflow-hidden cursor-pointer'
+							className='w-full h-full max-h-52 rounded overflow-hidden cursor-pointer'
 							key={photo}
 							src={photo}
 							alt={photo}
@@ -50,4 +50,4 @@ const ImageCarrousel = ({
 	);
 };
 
-export default ImageCarrousel;
+export default ProductImageCarrousel;

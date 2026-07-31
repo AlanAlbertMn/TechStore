@@ -1,5 +1,5 @@
 import AddToCartButton from '@/components/AddToCartButton';
-import ImageCarrousel from '@/components/ImageCarrousel';
+import ProductImageCarrousel from '@/components/ProductImageCarrousel';
 import { Star } from 'lucide-react';
 import { getProduct, updateProductWithDetails } from '@/lib/products';
 import { type ProductDetails } from '@/types/Product';
@@ -57,7 +57,7 @@ async function ProductDetails({
 		<section className='bg-[#F8FAFC] text-slate-950/50 dark:bg-slate-950/70 w-full'>
 			{prod && (
 				<div className='mx-auto w-11/12 mb-4 md:py-12 flex flex-col md:flex-row gap-10'>
-					<ImageCarrousel
+					<ProductImageCarrousel
 						photo={prod.thumbnail}
 						title={prod.title}
 						photoArr={prod.images}

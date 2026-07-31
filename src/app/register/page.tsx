@@ -2,7 +2,7 @@
 import { signUpSchema } from '@/types/User';
 import Link from 'next/link';
 import { Resolver, SubmitErrorHandler, useForm } from 'react-hook-form';
-import { signUp } from '../api/auth/nextjs/actions';
+import { EXISTING_ACCOUNT, signUp } from '../api/auth/nextjs/actions';
 import { toast } from 'react-toastify';
 import { redirect } from 'next/navigation';
 
@@ -30,10 +30,15 @@ const RegisterPage = () => {
 
 	async function onSubmit(data: signUpSchema) {
 		const user = await signUp(data);
-		if (
-			user === 'Account already exists for this email' ||
-			user === 'Unable to create account'
-		) {
+		if (user === EXISTING_ACCOUNT) {
+			toast.info(user, {
+				position: 'bottom-right',
+				closeOnClick: true,
+				pauseOnHover: false,
+				theme: 'colored',
+			});
+			redirect('/login');
+		} else if (user === 'Unable to create account') {
 			toast.error(user, {
 				position: 'bottom-right',
 				closeOnClick: true,

@@ -7,7 +7,6 @@ import { OrderWithItems } from '@/types/Order';
 const userOrders = async () => {
 	const user = (await getUserFromSession()) as sessionSchema;
 	const orders: OrderWithItems[] = await getOrders(user.userId);
-	console.log(orders);
 
 	return (
 		<div className='md:w-2/3 mx-auto pt-5 px-4 grid gap-4'>
